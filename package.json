@@ -1,0 +1,11 @@
+{
+  "name": "crypto-web-token",
+  "version": "1.0.0",
+  "description": "This is almost like JWT but offers a more secure and roboust method. Not only does it offer to protect from modification but it also hides its content.  This offers an ability to cryptographycally decode/encode given strings.",
+  "main": "crypto-web-token.js",
+  "scripts": {
+    "test": "mkdir -p tmp && jest crypto-web-token.test.js  tokenizer.test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
