@@ -1,11 +1,11 @@
 
 const { CryptoWebToken } = require( './crypto-web-token' );
 
-const settingFile = require( 'async-context/settings' ).readSettings( e=>typeof e?.crypto_web_token?.tokenizer_password === 'string' );
+const settingFile = require( 'asynchronous-context/settings' ).readSettings( e=>typeof e?.crypto_web_token?.tokenizer_password === 'string' );
 const TOKENIZER_PASSWORD = settingFile?.crypto_web_token?.tokenizer_password;
 console.log( '[authentication-context] TOKENIZER_PASSWORD', TOKENIZER_PASSWORD );
 
-// const TOKENIZER_PASSWORD = process.env.TOKENIZER_PASSWORD ?? (()=>{throw new Error('environment variable TOKENIZER_PASSWORD cannot be null')})(); 
+// const TOKENIZER_PASSWORD = process.env.TOKENIZER_PASSWORD ?? (()=>{throw new Error('environment variable TOKENIZER_PASSWORD cannot be null')})();
 // const TOKENIZER_PASSWORD = 'helloworldfoobarbuz';
 
 const fs = require('fs');
@@ -55,7 +55,7 @@ function loadSaltLazily() {
 }
 
 function dateReviver(k,v) {
-  return (typeof v === 'string') && 
+  return (typeof v === 'string') &&
     v.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)(Z|([+\-])(\d{2}):(\d{2}))$/ ) ?  new Date(v) : v;
 }
 
