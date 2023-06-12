@@ -1,8 +1,8 @@
 
 const { CryptoWebToken } = require( './crypto-web-token' );
 
-const settingFile = require( 'asynchronous-context/settings' ).readSettings( e=>typeof e?.crypto_web_token?.tokenizer_password === 'string' );
-const TOKENIZER_PASSWORD = settingFile?.crypto_web_token?.tokenizer_password;
+const settingsFile = require( 'asynchronous-context/settings' ).readSettings( e=>typeof e?.crypto_web_token?.tokenizer_password === 'string' );
+const TOKENIZER_PASSWORD = settingsFile?.crypto_web_token?.tokenizer_password;
 console.log( '[authentication-context] TOKENIZER_PASSWORD', TOKENIZER_PASSWORD );
 
 // const TOKENIZER_PASSWORD = process.env.TOKENIZER_PASSWORD ?? (()=>{throw new Error('environment variable TOKENIZER_PASSWORD cannot be null')})();
