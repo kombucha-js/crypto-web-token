@@ -3,8 +3,18 @@
   "version": "1.0.0",
   "description": "This is almost like JWT but offers a more secure and roboust method. Not only does it offer to protect from modification but it also hides its content.  This offers an ability to cryptographycally decode/encode given strings.",
   "main": "crypto-web-token.js",
+  "type": "module",
+  "exports" : {
+    ".":                              "./crypto-web-token.mjs",
+    "./crypto-web-token.mjs":         "./crypto-web-token.mjs",
+    "./crypto-web-token":             "./crypto-web-token.mjs",
+    "./generate.mjs":                 "./generate.mjs",
+    "./generate":                     "./generate.mjs",
+    "./tokenizer.mjs":                "./tokenizer.mjs",
+    "./tokenizer":                    "./tokenizer.mjs"
+  },
   "bin" : {
-    "init-crypto-web-token" : "bin/init-crypto-web-token.js"
+    "init-crypto-web-token" : "bin/init-crypto-web-token.mjs"
   },
   "scripts": {
     "test": "mkdir -p tmp && jest crypto-web-token.test.js  tokenizer.test.js"

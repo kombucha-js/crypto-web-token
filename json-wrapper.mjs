@@ -18,4 +18,4 @@ class JSONWrapper {
   }
 }
 
-module.exports.JSONWrapper = JSONWrapper;
+export { JSONWrapper };

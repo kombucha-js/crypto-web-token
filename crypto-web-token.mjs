@@ -1,17 +1,17 @@
 
-const crypto    = require ('crypto');
-const {JSONWrapper} = require('./json-wrapper.js');
+import crypto        from 'crypto';
+import zlib          from 'zlib';
+import {JSONWrapper} from './json-wrapper.mjs';
 
 // replace(/x/g,'xx').replace(/-/g,'xa').replace(/_/g,'xb');
 //
-const zlib = require('zlib');
 
 class CryptoWebTokenError extends Error {
   constructor (...args){
     super(...args);
   }
 }
-module.exports.CryptoWebTokenError = CryptoWebTokenError;
+export { CryptoWebTokenError, CryptoWebTokenError as TokenError };
 
 
 // A one-time pad implementation that its ouput consists both the encripted
@@ -149,38 +149,38 @@ class CryptoWebToken {
     return text0.toString('utf-8');
   }
 }
-module.exports.CryptoWebToken = CryptoWebToken;
+export { CryptoWebToken };
 
 
 // function encryptJSON(text) {
 //   JSONWrapper.stringify(json);
 // }
 // module.exports.encryptJSON = encryptJSON;
-// 
+//
 // function decryptJSON(base64url) {
 // }
 // module.exports.decryptJSON = decryptJSON;
-// 
+//
 // function isLoggedIn(json) {
 // }
 // module.exports.isLoggedIn = isLoggedIn;
-// 
+//
 // // console.log( CryptoWebToken.createToken( 2048 ));
 // const password = 'helloworld';
 // const pad = Buffer.from( require('fs').readFileSync('./randomtoken2048.txt', 'utf-8').trim(), 'base64url' );
-// 
+//
 // // console.log( pad.length );
-// 
+//
 // var encrypted = new CryptoWebToken(password,pad).encryptJSON({hello:'world'}) ;
 // console.log({encrypted})
-// 
+//
 // var decrypted = new CryptoWebToken(password,pad).decryptJSON(encrypted);
-// console.log({decrypted}); 
-// 
+// console.log({decrypted});
+//
 
 
 // var deflated = zlib.deflateSync(input).toString('base64');
 // var inflated = zlib.inflateSync(new Buffer(deflated, 'base64')).toString();
-// 
+//
 // console.log(inflated);
 
