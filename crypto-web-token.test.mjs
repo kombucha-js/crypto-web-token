@@ -2,14 +2,16 @@
 import { test, describe, it, before, after }     from   'node:test'  ;
 import assert     from   'node:assert/strict'  ;
 import { CryptoWebToken } from  './crypto-web-token.mjs' ;
-import { writeFileSync, readFileSync }  from 'fs';
+import { mkdir, writeFile, readFile }  from 'fs/promises';
 
-writeFileSync( './tmp/pad4096.txt',  CryptoWebToken.createToken( 4096 ).toString('base64url'), 'utf-8' );
-writeFileSync( './tmp/salt4096.txt', CryptoWebToken.createToken( 4096 ).toString('base64url'), 'utf-8' );
+await mkdir( './tmp/foo/bar', { recursive: true } );
+
+await writeFile( './tmp/foo/bar/pad4096.txt',  CryptoWebToken.createToken( 4096 ).toString('base64url'), 'utf-8' );
+await writeFile( './tmp/foo/bar/salt4096.txt', CryptoWebToken.createToken( 4096 ).toString('base64url'), 'utf-8' );
 
 const password = 'helloworld';
-const pad      = Buffer.from( readFileSync('./tmp/pad4096.txt', 'utf-8').trim(), 'base64url' );
-const salt     = Buffer.from( readFileSync('./tmp/salt4096.txt', 'utf-8').trim(), 'base64url' );
+const pad      = Buffer.from( (await readFile('./tmp/foo/bar/pad4096.txt',  'utf-8')).trim(), 'base64url' );
+const salt     = Buffer.from( (await readFile('./tmp/foo/bar/salt4096.txt', 'utf-8')).trim(), 'base64url' );
 
 // console.log( onetimepad.length );
 
