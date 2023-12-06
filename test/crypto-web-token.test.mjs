@@ -1,7 +1,7 @@
 
 import { test, describe, it, before, after }     from   'node:test'  ;
 import assert     from   'node:assert/strict'  ;
-import { CryptoWebToken } from  './crypto-web-token.mjs' ;
+import { CryptoWebToken } from  'crypto-web-token' ;
 import { mkdir, writeFile, readFile }  from 'fs/promises';
 
 await mkdir( './tmp/foo/bar', { recursive: true } );

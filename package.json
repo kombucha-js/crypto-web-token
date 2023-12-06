@@ -17,7 +17,7 @@
     "init-crypto-web-token" : "bin/init-crypto-web-token.mjs"
   },
   "scripts": {
-    "test": "mkdir -p tmp && jest crypto-web-token.test.js  tokenizer.test.js"
+    "test": "cd test; node --test"
   },
   "author": "",
   "license": "ISC"

@@ -1,4 +1,5 @@
 
+import "./tokenizer.init.mjs";
 import { test, describe, it, before, after }     from   'node:test'  ;
 import assert     from   'node:assert/strict'  ;
 import { generateSaltIfNotExist } from 'crypto-web-token/tokenizer';

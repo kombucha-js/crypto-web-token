@@ -1,12 +1,21 @@
 
-import { CryptoWebToken } from  './crypto-web-token.mjs' ;
-import { readSettings } from 'asynchronous-context/settings';
-import  fs from 'fs';
+import { CryptoWebToken }      from './crypto-web-token.mjs' ;
+import { asyncReadSettings }        from 'asynchronous-context/settings';
+import { preventUndefined ,unprevent }    from 'prevent-undefined' ;
+import  fs                     from 'fs';
 import { CryptoWebTokenError } from 'crypto-web-token';
+import { schema }              from "vanilla-schema-validator";
 
-const settingsFile = readSettings( e=>typeof e?.crypto_web_token?.tokenizer_password === 'string' );
-const TOKENIZER_PASSWORD = settingsFile?.crypto_web_token?.tokenizer_password;
-console.log( '[authentication-context] TOKENIZER_PASSWORD', TOKENIZER_PASSWORD );
+// e=>typeof e?.crypto_web_token?.tokenizer_password === 'string' ;
+console.log( 'asyncReadSettings()', (await asyncReadSettings()) );
+const settingsFile = preventUndefined(
+  (await asyncReadSettings()),
+  (await import("./schema.mjs") ).init( schema ).t_crypto_web_token()
+);
+
+const TOKENIZER_PASSWORD = settingsFile.crypto_web_token?.tokenizer_password;
+
+console.log( '[authentication-context] TOKENIZER_PASSWORD', unprevent( TOKENIZER_PASSWORD) );
 
 // const TOKENIZER_PASSWORD = process.env.TOKENIZER_PASSWORD ?? (()=>{throw new Error('environment variable TOKENIZER_PASSWORD cannot be null')})();
 // const TOKENIZER_PASSWORD = 'helloworldfoobarbuz';
