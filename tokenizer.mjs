@@ -7,7 +7,7 @@ import { CryptoWebTokenError } from 'crypto-web-token';
 import { schema }              from "vanilla-schema-validator";
 
 // e=>typeof e?.crypto_web_token?.tokenizer_password === 'string' ;
-console.log( 'asyncReadSettings()', (await asyncReadSettings()) );
+// console.log( 'asyncReadSettings()', (await asyncReadSettings()) );
 const settingsFile = preventUndefined(
   (await asyncReadSettings()),
   (await import("./schema.mjs") ).init( schema ).t_crypto_web_token()
